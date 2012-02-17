@@ -1,0 +1,48 @@
+		    README for Omikuji version 0.0
+			   16 February 2012
+
+	       Copyright © 2012 Jason J. A. Stephenson
+			  <jason@sigio.com>
+
+Omikuji is meant as a replacement for the fortune and strfile
+programs.  Omikuji consists of two programs: omikuji and omifile.
+
+Omifile parses a delimited text file, the same format used by the
+traditional strfile and fortune, and produces a binary file.  This
+binary file is composed of a header, two indexes, and the textual
+entries from the input file.  The header includes a single byte
+version field so up to 256 variations of the file format can be
+created (if necessary).  The first releases of omikuji support the
+zeroth version of the file.  (Major versions of omikuji will be
+incremented as new file formats are created.)  For more information on
+the file formats supported by omikuji and omifile, see the
+accompanying file Format.rtf.
+
+Omikuji reads the file output by omifile and uses the information in
+the header and indexes to lookup and display a "fortune."
+
+This distribution of omikuji comes with a Makefile.  The Makefile
+requires GNU Make.  All that you need do to install omikuji and
+omifile is to type "make" in the main directory.  This will produce
+two executable binaries: omikuji and omifile.  Simply copy these files
+to some directory in your execution PATH.  (If you haven't already, it
+is a good idea to create your own bin subdirectory under your home
+directory where you can put custom programs that no one else on your
+system needs.)
+
+Omikuji currently depends on Glib-2.0.  The binaries will not build
+unless Glib-2.0 is installed.  The Makefile uses pkg-config to find
+Glib-2.0.  If you have installed Glib-2.0 from a package or port, then
+it should be automatically detected.  If not, then you will likely
+need to install pkg-config as well.
+
+There are rudimentary man pages in the man subdirectory.  You can
+install them somewhere into your MANPATH or just read them in place.
+The following commands will allow you to read them on screen:
+
+    groff -mman -Tascii omifile.1 | less
+    groff -mman -Tascii omikuji.6 | less
+
+Omikuji is distributed under the terms of the GNU General Public
+License version 3, or later.  Details can be found in the file COPYING
+that should accompany this distribution.

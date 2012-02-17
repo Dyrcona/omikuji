@@ -1,0 +1,57 @@
+.TH OMIFILE 1 "February 16, 2012"
+.SH NAME
+omifile - convert fortune file to omikuji file
+.SH SYNOPSIS
+omifile [option]... [filename]...
+.SH DESCRIPTION
+Omifile creates input files for omikuji from delimited text files.
+The format of the input files is the same as that of strfile, the
+counterpart of this program used by fortune.
+.SH OPTIONS
+.PP
+\fB-C\fP
+.br
+\fB--skipcomments\fP
+.RS
+Skip comments in the input file(s).
+.RE
+.PP
+\fB-s\fP
+.br
+\fB--sort\fP
+.RS
+Sort fortunes in output.
+.RE
+.PP
+\fB-u\fP
+.br
+\fB--unique\fP
+.RS
+Output only unique fortunes. Also has the side effect of sorting
+output whether that option is selected or not.
+.RE
+.PP
+\fB-o filename\fP
+.br
+\fB--outputfilename=filename\fP
+.RS
+Combine all output in 1 file named \fIfilename\fP.
+.RE
+.PP
+\fB-e charset\fP
+.br
+\fB--encoding=charset\fP
+.RS
+Specify the character set encoding of the input files.  If not
+specified, the default for the current locale will be used.
+.RE
+.PP
+\fB-d character\fP
+.br
+\fB--delimiter=character\fP
+.RS
+Set the input file delimiter \fIcharacter\fP.
+.RE
+.SH AUTHOR
+.PP
+Omifile was written by Jason J. A. Stephenson <jason@sigio.com>.
