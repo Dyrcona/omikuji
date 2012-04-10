@@ -16,10 +16,19 @@
 # along with Omikuji.  If not, see <http://www.gnu.org/licenses/>.
 
 # Variables to define our package and setup a tarball distribution:
-package=omikuji
-version=0.0
-tarname=$(package)
-distdir=$(package)-$(version)
+package = omikuji
+version = 0.0
+tarname = $(package)
+distdir = $(package)-$(version)
+
+# Variables for installation:
+prefix = /usr/local
+exec_prefix = $(prefix)
+bindir = $(exec_prefix)/bin
+datarootdir = $(prefix)/share
+mandir = $(datarootdir)/man
+man1dir = $(mandir)/man1
+man6dir = $(mandir)/man6
 
 # Settings needed for our sources:
 CFLAGS += -std=c99
@@ -38,7 +47,7 @@ endif
 
 VPATH = source include
 
-.PHONY: all clean dist FORCE
+.PHONY: all clean dist FORCE install uninstall
 
 all: omifile omikuji
 
@@ -80,3 +89,18 @@ $(distdir): FORCE
 FORCE:
 	-rm -f $(distdir).tar.gz > /dev/null 2>&1
 	-rm -rf $(distdir) > /dev/null 2>&1
+
+install: all
+	install -d $(DESTDIR)$(bindir)
+	install -m 0755 omikuji $(DESTDIR)$(bindir)
+	install -m 0755 omifile $(DESTDIR)$(bindir)
+	install -d $(DESTDIR)$(man1dir)
+	install -m 0644 man/omifile.1 $(DESTDIR)$(man1dir)
+	install -d $(DESTDIR)$(man6dir)
+	install -m 0644 man/omikuji.6 $(DESTDIR)$(man6dir)
+
+uninstall:
+	-rm $(DESTDIR)$(bindir)/omikuji
+	-rm $(DESTDIR)$(bindir)/omifile
+	-rm $(DESTDIR)$(man1dir)/omifile.1
+	-rm $(DESTDIR)$(man6dir)/omikuji.6
