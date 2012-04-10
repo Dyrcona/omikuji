@@ -32,7 +32,8 @@ endif
 
 VPATH = source include
 
-.PHONY: all
+.PHONY: all clean
+
 all: omifile omikuji
 
 omikujidata.o: omikujidata.h omikujidata.c
@@ -47,3 +48,7 @@ omifile: omifile.o omikujidata.o
 omikuji: omikuji.o omikujidata.o
 	$(LINK.c) $^ $(LOADLIBES) -o $@ $(LDLIBS)
 
+clean:
+	-rm omifile
+	-rm omikuji
+	-rm *.o
