@@ -15,6 +15,12 @@
 # You should have received a copy of the GNU General Public License
 # along with Omikuji.  If not, see <http://www.gnu.org/licenses/>.
 
+# Variables to define our package and setup a tarball distribution:
+package=omikuji
+version=0.0
+tarname=$(package)
+distdir=$(package)-$(version)
+
 # Settings needed for our sources:
 CFLAGS += -std=c99
 CPPFLAGS += -I include
@@ -32,7 +38,7 @@ endif
 
 VPATH = source include
 
-.PHONY: all clean
+.PHONY: all clean dist FORCE
 
 all: omifile omikuji
 
@@ -52,3 +58,25 @@ clean:
 	-rm omifile
 	-rm omikuji
 	-rm *.o
+
+dist: $(distdir).tar.gz
+
+$(distdir).tar.gz: $(distdir)
+	tar cho $(distdir) | gzip -9 -c > $@
+	rm -rf $(distdir)
+
+$(distdir): FORCE
+	mkdir -p $(distdir)/source
+	mkdir $(distdir)/include
+	mkdir $(distdir)/man
+	cp source/* $(distdir)/source
+	cp include/* $(distdir)/include
+	cp man/* $(distdir)/man
+	cp COPYING $(distdir)
+	cp Format.rtf $(distdir)
+	cp Makefile $(distdir)
+	cp README $(distdir)
+
+FORCE:
+	-rm -f $(distdir).tar.gz > /dev/null 2>&1
+	-rm -rf $(distdir) > /dev/null 2>&1
