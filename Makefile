@@ -19,7 +19,7 @@
 package = omikuji
 version = 0.0
 tarname = $(package)
-distdir = $(package)-$(version)
+distdir = $(tarname)-$(version)
 
 # Variables for installation:
 prefix = /usr/local
