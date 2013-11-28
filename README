@@ -39,8 +39,8 @@ with appropriate options.  See the file `INSTALL` for more
 information.
 
 If you don't see the `configure` script, then you likely got this
-package via git.  Simply run the `autogen.sh` script to generate
-`configure` and the other necessary files.
+package via git.  Simply run `autoreconf -i` to generate `configure`
+and the other necessary files.
 
 Omikuji currently depends on Glib-2.0.  The binaries will not build
 unless Glib-2.0 is installed.

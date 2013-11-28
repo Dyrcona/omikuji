@@ -16,4 +16,4 @@
 # along with Omikuji.  If not, see <http://www.gnu.org/licenses/>.
 
 SUBDIRS = source man
-EXTRA_DIST = man/omikuji.6 man/omifile.1
+EXTRA_DIST = Format.rtf man/omikuji.6 man/omifile.1
