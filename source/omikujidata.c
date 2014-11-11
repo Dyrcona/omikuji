@@ -23,13 +23,13 @@ const guint8 OMIKUJI_VERSION = 0;
 
 OmikujiResult verifyOmikujiSignature(OmikujiSignature signature)
 {
-	OmikujiResult isValid = OMIKUJI_OK;
-	gint cmp = 0;
-	for (gint i = 0; i < 7 && cmp == 0; i++)
-		cmp = signature.signature[i] - OMIKUJI_SIGNATURE[i];
-	if (cmp != 0)
-		isValid = OMIKUJI_BADSIGNATURE;
-	else if (signature.version > OMIKUJI_VERSION)
-		isValid = OMIKUJI_BADVERSION;
-	return isValid;
+  OmikujiResult isValid = OMIKUJI_OK;
+  gint cmp = 0;
+  for (gint i = 0; i < 7 && cmp == 0; i++)
+    cmp = signature.signature[i] - OMIKUJI_SIGNATURE[i];
+  if (cmp != 0)
+    isValid = OMIKUJI_BADSIGNATURE;
+  else if (signature.version > OMIKUJI_VERSION)
+    isValid = OMIKUJI_BADVERSION;
+  return isValid;
 }

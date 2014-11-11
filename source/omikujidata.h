@@ -24,22 +24,22 @@ extern const gchar *OMIKUJI_SIGNATURE;
 extern const guint8 OMIKUJI_VERSION;
 
 typedef enum {
-	OMIKUJI_OK = 0,
-	OMIKUJI_BADSIGNATURE = 1,
-	OMIKUJI_BADVERSION = 2
+  OMIKUJI_OK = 0,
+  OMIKUJI_BADSIGNATURE = 1,
+  OMIKUJI_BADVERSION = 2
 } OmikujiResult;
 
 typedef struct {
-	gchar signature[7];
-	guint8 version;
+  gchar signature[7];
+  guint8 version;
 } OmikujiSignature;
 
 typedef struct {
-	OmikujiSignature signature;
-	guint32 comment_table_offset;
-	guint32 comment_count;
-	guint32 fortune_table_offset;
-	guint32 fortune_count;
+  OmikujiSignature signature;
+  guint32 comment_table_offset;
+  guint32 comment_count;
+  guint32 fortune_table_offset;
+  guint32 fortune_count;
 } OmikujiHeaderV0;
 
 extern OmikujiResult verifyOmikujiSignature(OmikujiSignature sig);
